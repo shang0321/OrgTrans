@@ -1,0 +1,273 @@
+from .yacs import CfgNode as CN
+
+_C = CN()
+_C.debug= False
+_C.do_test=False
+_C.finetune=False
+_C.device= ''
+_C.ngpu=1
+_C.adam=False
+_C.prune_finetune=True
+_C.reinitial=False
+_C.noautoanchor=True
+_C.project=''
+_C.name='exp'
+_C.epochs=300
+_C.local_rank=-1
+_C.save_period=-1
+_C.weights=''
+_C.freeze_layer_num = 0
+_C.cache=False
+_C.rect=False
+_C.save_dir=''
+_C.single_cls=False
+_C.evolve=False
+_C.noval=False
+_C.nosave=False
+_C.sync_bn=False
+_C.resume=False
+_C.exist_ok=False
+_C.linear_lr=False
+_C.check_datacache=False
+_C.entity=None
+_C.upload_dataset=False
+_C.bbox_interval=-1
+_C.artifact_alias='latest'
+
+_C.hyp=CN()
+_C.hyp.use_aug=True
+_C.hyp.lr0=0.01
+_C.hyp.lrf=0.01
+_C.hyp.momentum=0.937
+_C.hyp.weight_decay=0.0005
+_C.hyp.warmup_epochs=0
+_C.hyp.warmup_momentum=0.8
+_C.hyp.warmup_bias_lr=0.1
+
+_C.hyp.hsv_h=0.5
+_C.hyp.hsv_s=0.5
+_C.hyp.hsv_v=0.5
+_C.hyp.degrees=0.0
+_C.hyp.translate=0.1
+_C.hyp.scale=0.5
+_C.hyp.shear=0.0
+_C.hyp.perspective=0.0
+_C.hyp.flipud=0.0
+_C.hyp.fliplr=0.5
+_C.hyp.mosaic=1.0
+_C.hyp.mixup=0.0
+_C.hyp.sparse_rate=0.01
+_C.hyp.burn_epochs=1
+_C.hyp.copy_paste=0.0
+_C.hyp.no_aug_epochs=0
+_C.hyp.label_dir=''
+_C.hyp.image_dir=''
+_C.hyp.cutout=0.0
+
+_C.Training=CN()
+_C.Training.image_weights=False
+_C.Training.cache_images=True
+_C.Training.multi_scale=False
+_C.Training.sync_bn=False
+_C.Training.resume=''
+_C.Training.nosave=False
+_C.Training.notest=False
+_C.Training.evolve=False
+_C.Training.save_dir=''
+
+_C.Log=CN()
+_C.Log.log_imgs=16
+_C.Log.log_artifacts=False
+
+_C.Model=CN()
+_C.Model.noautoanchor=False
+_C.Model.single_cls=False
+_C.Model.weights=''
+_C.Model.dynamic_load = False
+
+_C.Model.width_multiple = 1.0
+_C.Model.depth_multiple = 1.0
+_C.Model.in_features = ("dark3", "dark4", "dark5")
+_C.Model.depthwise = False
+_C.Model.conv_strides = [2,2,2,2,2]
+_C.Model.anchors = [[10, 13, 16, 30, 33, 23], [30, 61, 62, 45, 59, 119], [116, 90, 156, 198, 373, 326]]
+_C.Model.decoupled_head = False
+_C.Model.ch = 3
+
+_C.Model.Backbone = CN()
+_C.Model.Backbone.name = 'darknet'
+_C.Model.Backbone.stage_repeats = [4, 8, 4]
+_C.Model.Backbone.output_layers = [6, 14, 18]
+_C.Model.Backbone.model_size = '0.2x'
+_C.Model.Backbone.activation = 'LeakyReLU'
+_C.Model.Backbone.arch = [0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1] 
+_C.Model.Backbone.first_input_channels = 1
+_C.Model.Backbone.out_stages = [2, 3, 4]
+_C.Model.Backbone.kernel_size = 3
+_C.Model.Backbone.with_last_conv = False
+_C.Model.Backbone.pretrain = False
+_C.Model.Backbone.in_channels = 3
+_C.Model.Backbone.out_channels = [64, 128, 256, 512, 1024]
+_C.Model.Backbone.num_repeats = [1, 6, 12, 18, 6]
+
+_C.Model.Neck = CN()
+_C.Model.Neck.name = 'darknet'
+_C.Model.Neck.in_channels = [32, 64, 128]
+_C.Model.Neck.out_channels = [32]
+_C.Model.Neck.start_level = 0
+_C.Model.Neck.end_level = -1
+_C.Model.Neck.num_outs = 3
+_C.Model.Neck.activation = 'ReLU'
+_C.Model.Neck.interpolate = 'bilinear'
+_C.Model.Neck.num_repeats = [12, 12, 12, 12]
+
+_C.Model.Head = CN()
+_C.Model.Head.name = 'darknet'
+_C.Model.Head.share_cls_reg = False
+_C.Model.Head.activation = 'LeakyReLU'
+_C.Model.Head.conv_type = 'DWConv'
+_C.Model.Head.stacked_convs= 2
+_C.Model.Head.octave_base_scale= 5
+_C.Model.Head.feat_channels = 256
+_C.Model.Head.strides = [8,16,32]
+_C.Model.Head.in_channels = [128, 256, 512]
+_C.Model.Head.num_decouple = 2
+_C.Model.RepOpt = False
+_C.Model.RepScale_weight = ''
+_C.Model.RealVGGModel = False
+
+_C.Model.pruned_fc_channel = 256
+_C.Model.inplace=True
+_C.Model.prior_prob = 0.01
+
+_C.Loss = CN()
+_C.Loss.type = 'ComputeXLoss'
+_C.Loss.box=0.05
+_C.Loss.cls=0.5
+_C.Loss.cls_pw=1.0
+_C.Loss.obj=1.0
+_C.Loss.obj_pw=1.0
+_C.Loss.fl_gamma=0.0
+_C.Loss.landmark = 0.005
+_C.Loss.qfl_use_sigmoid= True
+_C.Loss.qfl_beta= 2.0
+_C.Loss.qfl_loss_weight=1.0
+_C.Loss.dfl_loss_weight=0.25
+_C.Loss.bbox_loss_weight=2.0
+_C.Loss.reg_max=7
+_C.Loss.autobalance= False
+_C.Loss.label_smoothing=0.0
+_C.Loss.anchor_t = 4.0
+_C.Loss.kp_loss_weight = 10.0
+_C.Loss.static_assigner_epoch = 5
+
+_C.Dataset=CN()
+_C.Dataset.train=''
+_C.Dataset.val=''
+_C.Dataset.test=''
+_C.Dataset.target = ''
+_C.Dataset.img_path=''
+_C.Dataset.label_path=''
+
+_C.Dataset.batch_size= 96
+_C.Dataset.img_size = 640
+_C.Dataset.rect = False
+_C.Dataset.workers=16
+_C.Dataset.quad=False
+_C.Dataset.use_bgr=False
+_C.Dataset.lp_order=False
+_C.Dataset.label_length= 14
+_C.Dataset.nc=80
+_C.Dataset.np=0
+_C.Dataset.names=[]
+_C.Dataset.data_name='default_name'
+_C.Dataset.sampler_type='normal'
+_C.Dataset.use_car_license_augment=False
+_C.Dataset.chassis_id=[0]
+_C.Dataset.plate_id=[1]
+_C.Dataset.norm_scale=255.0
+_C.Dataset.debug= False
+_C.Dataset.val_kp= False
+
+_C.Eval=CN()
+_C.Eval.conf_thres=0.4
+
+_C.Qat=CN()
+_C.Qat.use_qat = False
+_C.Qat.quant_dir = False
+_C.Qat.bitmode = 'int8'
+_C.Qat.backend = 'tensorrt'
+_C.Qat.use_defaultfuse = False
+_C.Qat.sensitive_num = -1
+_C.Qat.sensitive_relerror = 0.01
+_C.Qat.sensitive_eval_batch = 30
+
+_C.Prune=CN()
+_C.Prune.use_sparse = False
+_C.Prune.sparse_rate = 1e-3
+_C.Prune.flops_target = 0.3
+_C.Prune.prune_freq = 50
+_C.Prune.channel_divide = 8
+_C.Prune.iterative_prune = False
+
+_C.Prune.ft_reinit = False
+_C.Prune.prune_finetune=False
+_C.Prune.sr_type = ''
+_C.Prune.update_sr = False
+
+_C.Distill=CN()
+_C.Distill.use_distill=False
+_C.Distill.dist_loss='l2'
+_C.Distill.Tmodel=''
+_C.Distill.temp=20
+_C.Distill.giou=0.05
+_C.Distill.dist=1.0
+_C.Distill.boxloss=False
+_C.Distill.objloss=False
+_C.Distill.clsloss=False
+
+_C.SSOD = CN()
+_C.SSOD.train_domain = False
+_C.SSOD.extra_teachers = [ ]
+_C.SSOD.extra_teachers_class_names = [ ]
+_C.SSOD.conf_thres = 0.65
+_C.SSOD.valid_thres = 0.55
+_C.SSOD.nms_conf_thres = 0.3
+_C.SSOD.nms_iou_thres = 0.6
+_C.SSOD.teacher_loss_weight = 0.1
+_C.SSOD.cls_loss_weight= 0.0
+_C.SSOD.obj_loss_weight= 1.0
+_C.SSOD.box_loss_weight= 0.0
+_C.SSOD.focal_loss= 0.0
+_C.SSOD.loss_type='ComputeStudentLoss'
+_C.SSOD.pseudo_label_type='FairPseudoLabel'
+_C.SSOD.debug=False
+
+_C.NAS = CN()
+_C.NAS.use_nas = False
+_C.NAS.width_range = []
+_C.NAS.params_target = [0,1e10]
+_C.NAS.flops_target = [0,1e10]
+_C.NAS.GEA = CN()
+_C.NAS.GEA.pop_size = 10
+_C.NAS.GEA.sample_size = 3
+_C.NAS.GEA.sample_epochs = 20
+_C.NAS.GEA.sample_dataIter = -1
+_C.NAS.GEA.cycles = 100
+
+_C.SSOD.ssod_hyp = CN()
+_C.SSOD.ssod_hyp.mosaic=1.0
+_C.SSOD.ssod_hyp.degrees=0.0
+_C.SSOD.ssod_hyp.translate=0.1
+_C.SSOD.ssod_hyp.scale=0.5
+_C.SSOD.ssod_hyp.shear=0.0
+_C.SSOD.ssod_hyp.flipud=0.0
+_C.SSOD.ssod_hyp.fliplr=0.5
+_C.SSOD.ssod_hyp.perspective=0.0
+_C.SSOD.ssod_hyp.hsv_h=0.015
+_C.SSOD.ssod_hyp.hsv_s=0.7
+_C.SSOD.ssod_hyp.hsv_v=0.4
+_C.SSOD.ssod_hyp.with_gt=False
+
+def get_cfg():
+    return _C.clone()

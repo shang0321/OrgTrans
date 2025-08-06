@@ -1,0 +1,48 @@
+project: ''
+name: ''
+adam: False
+epochs:
+weights: ''
+prune_finetune: False
+linear_lr: True
+hyp:
+  lr0: 0.01
+  hsv_h: 0.015
+  hsv_s: 0.7
+  hsv_v: 0.4
+  lrf: 0.1
+  scale: 0.9
+  no_aug_epochs: 0
+  mixup: 0.1
+  warmup_epochs: 3
+Model:
+  depth_multiple: 1.00
+  width_multiple: 1.00
+  Backbone: 
+    name: 'YoloV5'
+    activation: 'SiLU'
+  Neck: 
+    name: 'YoloV5' 
+    in_channels: [256, 512, 1024]
+    out_channels: [256, 512, 1024]
+    activation: 'SiLU'
+  Head: 
+    name: 'YoloV5'
+    activation: 'SiLU'
+  anchors: [[10,13, 16,30, 33,23],[30,61, 62,45, 59,119],[116,90, 156,198, 373,326]]
+Loss:
+  type: 'ComputeLoss'
+  cls: 0.3
+  obj: 0.7
+  anchor_t: 4.0
+Dataset:
+  data_name: ''
+  train: 
+  val: 
+  test: 
+  nc: 
+  np: 
+  names: ['']
+  img_size: 640
+  batch_size: 32
+  workers: 8 

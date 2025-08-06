@@ -1,0 +1,92 @@
+project: 'ssod_runs'
+name: ''
+adam: False
+epochs: 
+weights: ''
+prune_finetune: False
+linear_lr: True
+hyp:
+  lr0: 0.0005
+  hsv_h: 0.015
+  hsv_s: 0.7
+  hsv_v: 0.4
+  lrf: 0.1
+  scale: 0.9
+  burn_epochs: 0
+  no_aug_epochs: 0
+  warmup_epochs: 2
+Model:
+  depth_multiple: 1.00
+  width_multiple: 1.00
+  Backbone: 
+    name: 'YoloV5'
+    activation: 'SiLU'
+  Neck: 
+    name: 'YoloV5' 
+    in_channels: [256, 512, 1024]
+    out_channels: [256, 512, 1024]
+    activation: 'SiLU'
+  Head: 
+    name: 'YoloV5'
+    activation: 'SiLU'
+  anchors: [[10,13, 16,30, 33,23],[30,61, 62,45, 59,119],[116,90, 156,198, 373,326]]
+Loss:
+  type: 'ComputeLoss'
+  cls: 0.3
+  obj: 0.7
+  anchor_t: 4.0
+Dataset:
+  data_name: ''
+  train:
+  val: 
+  test: 
+  target: 
+  nc:
+  np:
+  names: [ '']
+  img_size: 640
+  batch_size: 32
+  sampler_type: 'class_balance'
+SSOD:
+  train_domain: True
+  nms_conf_thres: 0.25
+  nms_iou_thres: 0.45
+  teacher_loss_weight: 0.9
+  cls_loss_weight: 0.2
+  box_loss_weight: 0.3
+  obj_loss_weight: 0.8
+  loss_type: 'ComputeStudentMatchLoss'
+  ignore_thres_low: 0.5
+  ignore_thres_high: 0.85
+  uncertain_aug: True
+  use_ota: False
+  multi_label: False
+  ignore_obj: False
+  pseudo_label_with_obj: True
+  pseudo_label_with_bbox: True
+  pseudo_label_with_cls: True
+  with_da_loss: False
+  da_loss_weights: 0.01
+  epoch_adaptor: True
+  resample_high_percent: 0.5
+  resample_low_percent: 0.8
+  ema_rate: 0.9998
+  cosine_ema: True
+  progressive_blend: False
+  blend_start_epoch: 10
+  blend_end_epoch: 90
+  use_moco: True
+  moco_dim: 256
+  moco_k: 65536
+  moco_m: 0.999
+  moco_t: 0.2
+  moco_loss_weight: 0.5
+  use_wavelet: True
+  ssod_hyp:
+    with_gt: False
+    mosaic: 1.0
+    cutout: 0.5
+    autoaugment: 0.5
+    scale: 0.8
+    degrees: 0.0
+    shear: 0.0
