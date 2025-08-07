@@ -3,12 +3,7 @@
 **Authors:**  
 
 ---
-
-<p align="center">
-  <img src="OrgTrans.png" alt="OrgTrans Logo" width="200">
-</p>
-
-
+![OrgTrans1 Image](https://github.com/shang0321/OrgTrans/raw/main/assets/OrgTrans1)
 
 
 ## 📝Introduction
