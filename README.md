@@ -11,13 +11,15 @@
 
 OrgTrans, a cross-domain organoid analysis pipeline, harnesses transfer learning and domain-adaptive modules to enable robust detection and classification across heterogeneous imaging data. It provides scalable and generalizable support for multi-source organoid analysis.
 
-![Workflow](./worker.png)
+<div align="center">
+  <img src="https://github.com/shang0321/OrgTrans/raw/master/assets/OrgTrans3.png" alt="OrgTrans3 Image" width="500"/>
+</div>
 
 ## 🧪Visualizations
 
-| ![1](file:///D:/_system/Download/1.png) | ![2](file:///D:/_system/Download/2.png) |
-| --------------------------------------- | --------------------------------------- |
-| ![3](file:///D:/_system/Download/3.png) | ![4](file:///D:/_system/Download/4.png) |
+<div align="center">
+  <img src="https://github.com/shang0321/OrgTrans/raw/master/assets/OrgTrans2.png" alt="OrgTrans2 Image" width="500"/>
+</div>
 
 ## 📦Getting Started
 
