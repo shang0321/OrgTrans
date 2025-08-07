@@ -3,7 +3,7 @@
 **Authors:**  
 
 <div align="center">
-  <img src="https://github.com/shang0321/OrgTrans/raw/master/assets/orgtrans1.png" alt="orgtrans1 Image" width="800"/>
+  <img src="https://github.com/shang0321/OrgTrans/raw/master/assets/orgtrans1.png" alt="orgtrans1 Image" width="500"/>
 </div>
 
 
