@@ -2,8 +2,7 @@
 
 **Authors:**  
 
----
-![OrgTrans1 Image](https://github.com/shang0321/OrgTrans/raw/main/assets/OrgTrans1)
+![OrgTrans1 Image](./assets/OrgTrans1)
 
 
 ## 📝Introduction
