@@ -1,4 +1,4 @@
-# OrgTrans: A Transfer Learning Framework for Domain-generalized Morphological Analysis of Organoids
+# OrgTrans: An AI-Driven Knowledge Transfer Framework Enabling Cellular-Level Biological Generalization for Cross-Organoid Learning
 
 **Authors:**  
 
